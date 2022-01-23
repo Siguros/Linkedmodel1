@@ -379,8 +379,8 @@ double RealDevice::Read(double voltage) {	// Return read current (A)
 void RealDevice::Write(double deltaWeightNormalized, double weight, double minWeight, double maxWeight,int NumCell) {
 	double conductanceNew = 0;	// =conductance if no update
 	double conductanceNewN= conductanceN[NumCell];
-	int N1 = (NumCell-1)%NumCell;
-	int N2 = (NumCell+1)%NumCell;
+	int N1 = (NumCell-1)%4;
+	int N2 = (NumCell+1)%4;
 	double conductanceNewN1= conductanceN[N1];
 	double conductanceNewN2=conductanceN[N2];
 	deltaWeightNormalized = deltaWeightNormalized / (maxWeight - minWeight);
