@@ -931,7 +931,7 @@ double s2[param->nOutput];  // Output delta from hidden layer to the output laye
 												}
 
 											arrayHO->WriteCell(jj, k, deltaWeight2[jj][k], weight2[jj][k], param->maxWeight, param->minWeight, true, i);
-											static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->weightprev = deltaWegiht2[jj][k];
+											static_cast<AnalogNVM*>(arrayHO->cell[jj][k])->weightprev = deltaWeight2[jj][k];
 													
 										}
 									}
