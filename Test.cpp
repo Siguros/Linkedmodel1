@@ -142,14 +142,14 @@ void Validate() {
 
 							// Weight distribution Test
 						if(WeightDistTest>0){
-for(int i=0; i<10; i++){
-double j = i/10.0;
-if(weight[jj][k]>=j && weight[jj][k]<j+1){
-	weightDistvector[i] = weightDistvector[i]+1;
+for(int p=0; p<20; i++){
+double p2 = (p-10)/10; // -1 ~ +1
+if(weight1[j][k]>=p2 && weight1[j][k]<p2+0.1){
+	weightDistvector[p] = weightDistvector[p]+1;
 }
-else if(i=9){
-	if(weight[jj][k] == j+1){
-		weightDistvector[i] = weightDistvector[i]+1;
+else if(p=19){
+	if(weight1[j][k] == p2+0.1){
+		weightDistvector[p] = weightDistvector[p]+1;
 	}
 }
 }
@@ -402,10 +402,11 @@ else if(i=9){
 		}
 		//Weight Dist Test
 		if(param->WeightDistTest>0){
-			for(int i=0; i<10;i++){}
-			std::cout<< i << "=" << WeightDistTest[i]<<std::endl;
+			for(int kl=0; kl<20;kl++){}
+			std::cout<< kl << "=" << weightDistvector[kl]<<std::endl;
 
 		}
+		WeightDistvector = {0};
 	}
 	if (!param->useHardwareInTraining) {    // Calculate the classification latency and energy only for offline classification
 		arrayIH->readEnergy += sumArrayReadEnergyIH;
