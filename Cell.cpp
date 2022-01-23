@@ -381,8 +381,8 @@ void RealDevice::Write(double deltaWeightNormalized, double weight, double minWe
 	double conductanceNewN= conductanceN[NumCell];
 	int N1 = (NumCell-1)%NumCell;
 	int N2 = (NumCell+1)%NumCell;
-	double conductanceNewN1= conductance[N1];
-	double conductanceNewN2=conductance[N2];
+	double conductanceNewN1= conductanceN[N1];
+	double conductanceNewN2=conductanceN[N2];
 	deltaWeightNormalized = deltaWeightNormalized / (maxWeight - minWeight);
 	deltaWeightNormalized = NumCellperSynapse * deltaWeightNormalized;
 
