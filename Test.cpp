@@ -52,10 +52,10 @@ extern Param *param;
 extern std::vector< std::vector<double> > testInput;
 extern std::vector< std::vector<int> > dTestInput;
 extern std::vector< std::vector<double> > testOutput;
-
+int WeightDistTest = param->WeightDistTest;
 extern std::vector< std::vector<double> > weight1;
 extern std::vector< std::vector<double> > weight2;
-
+extern std::vector<double> weightDistvector;
 extern Technology techIH;
 extern Technology techHO;
 extern Array *arrayIH;
@@ -139,6 +139,22 @@ void Validate() {
 							}
 							IsumMax += arrayIH->GetMaxCellReadCurrent(j,k);
 							IsumMin += arrayIH->GetMinCellReadCurrent(j,k);
+
+							// Weight distribution Test
+						if(WeightDistTest>0){
+for(int i=0; i<10; i++){
+double j = i/10.0;
+if(weight[jj][k]>=j && weight[jj][k]<j+1){
+	weightDistvector[i] = weightDistvector[i]+1;
+}
+else if(i=9){
+	if(weight[jj][k] == j+1){
+		weightDistvector[i] = weightDistvector[i]+1;
+	}
+}
+}
+		
+						}
 						}
 						sumArrayReadEnergyIH += Isum * readVoltageIH * readPulseWidthIH;
 						int outputDigits = 2*(CurrentToDigits(Isum, IsumMax-IsumMin)-CurrentToDigits(inputSum, IsumMax-IsumMin));
@@ -383,6 +399,12 @@ void Validate() {
 		}
 		if (testOutput[i][countNum] == 1) {
 			correct++;
+		}
+		//Weight Dist Test
+		if(param->WeightDistTest>0){
+			for(int i=0; i<10;i++){}
+			std::cout<< i << "=" << WeightDistTest[i]<<std::endl;
+
 		}
 	}
 	if (!param->useHardwareInTraining) {    // Calculate the classification latency and energy only for offline classification

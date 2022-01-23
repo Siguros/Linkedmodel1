@@ -101,7 +101,8 @@ std::vector< std::vector<double> >
 momentumPrev1(param->nHide, std::vector<double>(param->nInput));
 std::vector< std::vector<double> >
 momentumPrev2(param->nOutput, std::vector<double>(param->nHide));
-
+std::vector<double>
+weightDistvector(10);
 
 /* # of correct prediction */
 int correct = 0;
